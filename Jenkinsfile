@@ -25,17 +25,15 @@ pipeline {
             }
         }
 
-        // stage('Push Docker Image') {
-        //     steps {
-        //         sh 'docker push swathipriyakasarapu/node-docker-app:${BUILD_NUMBER}'
-        //     }
-        // }
+         stage('Push Docker Image') {
+             steps {
+               sh 'docker push swathipriyakasarapu/node-docker-app:${BUILD_NUMBER}'
+           }
+         }
         
         stage('Create container') {
             steps {
-                sh 'docker stop node-container || true
-                   docker rm node-container || true
-                   docker run -d node-container -p 3000:8080 SwathiPriyaKasarapu/node-docker-app:${BUILD_NUMBER}'
+                sh 'docker run -d -p 3000:8080 SwathiPriyaKasarapu/node-docker-app:${BUILD_NUMBER}'
             }
         }
 
