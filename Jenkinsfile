@@ -33,7 +33,9 @@ pipeline {
         
         stage('Create container') {
             steps {
-                sh 'docker run -d -p 3000:8080 SwathiPriyaKasarapu/node-docker-app:${BUILD_NUMBER}'
+                sh 'docker stop node-container || true
+                   docker rm node-container || true
+                   docker run -d node-container -p 3000:8080 SwathiPriyaKasarapu/node-docker-app:${BUILD_NUMBER}'
             }
         }
 
