@@ -1,7 +1,4 @@
 pipeline {
-    environment {
-        IMAGE_NAME = "SwathiPriyaKasarapu/node-docker-app"
-    }
     agent any
 
     stages {
@@ -36,7 +33,7 @@ pipeline {
         
         stage('Create container') {
             steps {
-                sh 'docker run -d -p 3000:8080 SwathiPriyaKasarapu/node-docker-app:${BUILD_NUMBER}'
+                sh 'docker run -d -p 3000:8080 SwathiPriyaKasarapu/node-docker-app'
             }
         }
 
