@@ -20,14 +20,14 @@ pipeline {
             steps {
                 sh '''
                 docker build -t node-docker-app:${BUILD_NUMBER} .
-                docker tag node-docker-app:${BUILD_NUMBER} SwathiPriyaKasarapu/node-docker-app:${BUILD_NUMBER}
+                docker tag node-docker-app:${BUILD_NUMBER} SwathiPriyaKasarapu/node-docker-app
                 '''
             }
         }
 
          stage('Push Docker Image') {
              steps {
-               sh 'docker push SwathiPriyakasarapu/node-docker-app:${BUILD_NUMBER}'
+               sh 'docker push SwathiPriyakasarapu/node-docker-app'
            }
          }
         
