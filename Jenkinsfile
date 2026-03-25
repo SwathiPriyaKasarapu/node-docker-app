@@ -20,20 +20,20 @@ pipeline {
             steps {
                 sh '''
                 docker build -t node-docker-app:${BUILD_NUMBER} .
-                docker tag node-docker-app:${BUILD_NUMBER} SwathiPriyaKasarapu/node-docker-app
+                docker tag node-docker-app:${BUILD_NUMBER} SwathiPriyaKasarapu/node-docker-app:${BUILD_NUMBER}
                 '''
             }
         }
 
-         stage('Push Docker Image') {
-             steps {
-               sh 'docker push SwathiPriyakasarapu/node-docker-app'
-           }
-         }
+         // stage('Push Docker Image') {
+         //     steps {
+         //       sh 'docker push SwathiPriyakasarapu/node-docker-app:${BUILD_NUMBER}'
+         //   }
+         // }
         
         stage('Create container') {
             steps {
-                sh 'docker run -d -p 3000:8080 SwathiPriyaKasarapu/node-docker-app'
+                sh 'docker run -d -p 3000:8080 SwathiPriyaKasarapu/node-docker-app:${BUILD_NUMBER}'
             }
         }
 
