@@ -27,7 +27,7 @@ pipeline {
 
          stage('Push Docker Image') {
              steps {
-               sh 'docker push swathipriyakasarapu/node-docker-app:${BUILD_NUMBER}'
+               sh 'docker push SwathiPriyakasarapu/node-docker-app:${BUILD_NUMBER}'
            }
          }
         
