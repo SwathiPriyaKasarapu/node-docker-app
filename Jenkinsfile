@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        IMAGE_NAME = "SwathiPriyaKasarapu/node-docker-app"
+    }
     agent any
 
     stages {
